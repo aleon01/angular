@@ -1,0 +1,57 @@
+<div class="contenedor">
+  <div [hidden]="route.children.length !== 0">
+    <br>
+    <button mat-stroked-button color="primary" style="float: right" routerLink="/vehiculo/agregarvehiculo" >
+      <mat-icon>add_road</mat-icon>
+    </button>
+    <table mat-table [dataSource]="dataSourceVehiculo" matSort class="mat-elevation-z8">
+        <!-- Position Column -->
+      <ng-container matColumnDef="placa">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Placa </mat-header-cell>
+        <mat-cell *matCellDef="let vehiculo"> {{vehiculo.placa}} </mat-cell>
+      </ng-container>
+      
+        <!-- Name Column -->
+      <ng-container matColumnDef="modelo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Modelo </mat-header-cell>
+        <mat-cell *matCellDef="let vehiculo"> {{vehiculo.modelo}} </mat-cell>
+      </ng-container>
+        
+      <ng-container matColumnDef="marca">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Marca </mat-header-cell>
+        <mat-cell *matCellDef="let vehiculo"> {{vehiculo.marca}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoVehiuclo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Vehiculo </mat-header-cell>
+        <mat-cell *matCellDef="let vehiculo"> {{vehiculo.tipoVehiuclo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="capacidad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Capacidad </mat-header-cell>
+        <mat-cell *matCellDef="let vehiculo"> {{vehiculo.capacidad}} </mat-cell>
+      </ng-container>
+          
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef > Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let vehiculo"> 
+          <button mat-stroked-button color="primary" [routerLink]="['/vehiculo/editarvehiculo', vehiculo.idVehiculo]" >
+            <mat-icon>edit_road </mat-icon>
+          </button>
+          <button mat-stroked-button color="primary" (click)="abrirDialogo(vehiculo)">
+            <mat-icon>contact_page</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+
+    <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[2, 5, 10, 25, 100]" [length]="cantidad"
+    (page)="cambiarPagina($event)"></mat-paginator>
+
+    
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,41 @@
+<div class="contenedor">
+  <br><br>
+  <h2>Vehiculo</h2>
+  <br>
+  <form [formGroup]="form" #frmVehiculo="ngForm" (ngSubmit)="guardar()" >
+      <mat-form-field class="example-full-width">
+        <mat-label>Placa</mat-label>
+          <input matInput placeholder="ABA-157" formControlName="placa" maxlength="7">
+          <mat-error *ngIf="placa.invalid && placa.errors.required">Placa requerida</mat-error>
+          <mat-error *ngIf="placa.invalid && placa.errors.pattern">Formato incorrecto</mat-error>
+      </mat-form-field><br>
+      <mat-form-field class="example-full-width">
+          <mat-label>Modelo</mat-label>
+          <input type="number" matInput placeholder="2020" formControlName="modelo" >
+          <mat-error *ngIf="modelo.invalid && modelo.errors.required">Modelo requerida</mat-error>
+          <mat-error *ngIf="modelo.invalid && modelo.errors.min">Modelo minimo 2005</mat-error>
+          <mat-error *ngIf="modelo.invalid && modelo.errors.max">Modelo maximo 2022</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Marca</mat-label>
+          <input matInput placeholder="Ford" formControlName="marca" maxlength="15">
+          <mat-error *ngIf="marca.invalid && marca.errors.required">Modelo requerida</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Tipo de Vehiculo</mat-label>
+          <input matInput placeholder="Carga" formControlName="tipoVehiuclo">
+          <mat-error *ngIf="tipoVehiuclo.invalid && tipoVehiuclo.errors.required">Modelo requerida</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Capacidad</mat-label>
+          <input matInput placeholder="170kg" formControlName="capacidad" maxlength="6">
+          <mat-error *ngIf="capacidad.invalid && capacidad.errors.required">Modelo requerida</mat-error>
+        </mat-form-field><br>
+        <button mat-mini-fab color="primary" type="submit" [disabled]="frmVehiculo.invalid">
+          <mat-icon>add_task</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" type="button" routerLink="/vehiculo">
+          <mat-icon>cancel</mat-icon>
+        </button>
+  </form>
+</div>

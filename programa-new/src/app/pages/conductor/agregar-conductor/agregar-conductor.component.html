@@ -1,0 +1,70 @@
+<div class="contenedor">
+<br><br>
+  <form [formGroup]="formConductor" #frmConductor="ngForm" (ngSubmit)="guardar()" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Documento</mat-label>
+        <input matInput placeholder="1074565763" formControlName="documento" maxlength="13">
+        <mat-error *ngIf="documento.invalid && documento.errors.required">Documento requerido</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Camilo" formControlName="nombre">
+        <mat-error *ngIf="nombre.invalid && nombre.errors.required ">Nombre requerido</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Ramirez" formControlName="apellido" >
+        <mat-error *ngIf="apellido.invalid && apellido.errors.required">Apellido requerido</mat-error>
+    </mat-form-field><br>
+    
+    <mat-form-field class="example-full-width">
+      <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Usuario" formControlName="nick" >
+        <mat-error *ngIf="nick.invalid && nick.errors.required">Usuario requerido</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Ingrese su clave</mat-label>
+        <input matInput type="password" placeholder="******" formControlName="clave">
+        <mat-error *ngIf="clave.invalid && clave.errors.required">Clave requerida</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Dirección</mat-label>
+        <input matInput placeholder="Calle 17" formControlName="direccion">
+        <mat-error *ngIf="direccion.invalid && direccion.errors.required">Dirección requerida</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Celular</mat-label>
+        <input matInput placeholder="3178902567" formControlName="celular">
+        <mat-error *ngIf="celular.invalid && celular.errors.required">Celular requerido</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Celular 2</mat-label>
+        <input matInput placeholder="3207894665" formControlName="celularAux">
+        <mat-error *ngIf="celularAux.invalid && celularAux.errors.required">Dirección requerida</mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Correo</mat-label>
+        <input matInput placeholder="user@hotmail.com" formControlName="correo">
+        <mat-error *ngIf="correo.invalid && correo.errors.required">Dirección requerida</mat-error>
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Departamentos</mat-label>
+      <mat-select [(value)]="idDepartamento" (selectionChange)="idDepar($event.value)">
+        <mat-option [value]="departamento.idDepartamento" *ngFor="let departamento of dataSource">{{ departamento.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ciudades</mat-label>
+      <mat-select  formControlName="ciudadReg">
+        <mat-option [value]="ciudad" *ngFor="let ciudad of dataSourceCiudad">{{ ciudad.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field><br><br>
+    <button mat-mini-fab color="primary" type="submit" [disabled]="frmConductor.invalid">
+      <mat-icon>add_task</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" type="button" routerLink="/conductor">
+      <mat-icon>cancel</mat-icon>
+    </button>
+
+</form>
+</div>
