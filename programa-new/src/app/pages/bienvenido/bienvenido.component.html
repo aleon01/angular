@@ -5,12 +5,11 @@
     </head>
     <body>
         <div class="cover">
-            <h1>Usuarios   <small>Tranportes</small><br></h1>
-            <button mat-raised-button color="primary" style="float: center;" class="logininicio" *ngIf="!logininicio" routerLink="/login">;
-            <mat-icon>touch-app</mat-icon>
-            <span>Ingresar</span>
-            </button>
-            <img src="assets/Bienvenido.jpg" width="490" style="margin: auto;">
+            <h1>Usuarios<small>Tranportes</small></h1>
+            <button mat-raised-button color="primary" style="float: center;" class="isLogged" *ngIf="!isLogged" routerLink="/login">
+                <span>Ingresar</span>
+            </button><br><br>
+            <img src="assets/Bienvenido.jpg" width="460" style="margin: auto;">
         </div>
     </body>
 </html>
