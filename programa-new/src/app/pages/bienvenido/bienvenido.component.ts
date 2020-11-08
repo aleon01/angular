@@ -1,3 +1,4 @@
+import { LoginService } from './../../_service/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BienvenidoComponent implements OnInit {
 
-  constructor() { }
+  isLogged: boolean;
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  logininicio(){
+    this.loginService.cerrarSesion();
+    const user = this.loginService.estaLogueado();
+    if (user){​​​​​
+      this.isLogged = true;
+    }​​​​​
   }
 
 }

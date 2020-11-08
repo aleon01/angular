@@ -9,9 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Conductores';
 
+  isLogged: boolean;
+
   constructor(private loginService: LoginService){}
 
   cerrarSesion(){
     this.loginService.cerrarSesion();
+    const user = this.loginService.estaLogueado();
+    if (user){​​​​​
+      this.isLogged = true;
+    }​​​​​
   }
 }

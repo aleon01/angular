@@ -22,8 +22,7 @@ export class ServerErrorInterceptorService implements HttpInterceptor {
         }
       }
     })).pipe(catchError((err) => {
-      console.log("Error entro al filtro");
-      console.log(err);
+    
 
       if (err.status === 400 && err.error.error_descripcion === "Bad credentials"){
         this.openSnackBar("Usuario o contraseña incorrecta");
